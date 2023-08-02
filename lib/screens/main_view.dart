@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone/screens/login_view.dart';
 import 'package:instagram_clone/states/auth/provider/auth_state_provider.dart';
 
 class MainView extends StatelessWidget {
