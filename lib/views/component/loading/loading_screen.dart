@@ -8,15 +8,15 @@ class LoadingScreen {
   LoadingScreen._sharedInstance();
   static final LoadingScreen _shared = LoadingScreen._sharedInstance();
   factory LoadingScreen.instance() => _shared;
-  LoadingScreenController? _controller;
+  LoadingScreenController? controller;
   void show({
     required BuildContext context,
     String text = Strings.loading,
   }) {
-    if (_controller?.update(text) ?? false) {
+    if (controller?.update(text) ?? false) {
       return;
     } else {
-      _controller = showOverlay(
+      controller = showOverlay(
         context: context,
         text: text,
       );
@@ -24,23 +24,24 @@ class LoadingScreen {
   }
 
   void hide() {
-    _controller?.close();
-    _controller = null;
+    controller?.close();
+    controller = null;
   }
 
   LoadingScreenController? showOverlay({
     required BuildContext context,
     required String text,
   }) {
+    final textController = StreamController<String>();
+    textController.add(text);
     final state = Overlay.of(context);
     if (state == null) {
       return null;
     }
-    final textController = StreamController<String>();
-    textController.add(text);
 
     final renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
+
     final overlay = OverlayEntry(builder: (context) {
       return Material(
         color: Colors.black.withAlpha(150),
