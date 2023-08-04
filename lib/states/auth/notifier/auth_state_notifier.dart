@@ -25,7 +25,7 @@ class AuthStateNofitifer extends StateNotifier<AuthState> {
 
   Future<void> loginWithGoogle() async {
     state = state.copyWithIsLoading(true);
-    final result =await _authenticator.loginWithGoogle();
+    final result = await _authenticator.loginWithGoogle();
     final userId = _authenticator.userId;
     if (result == AuthResult.success && userId != null) {
       await saveUserInfo(userId: userId);
@@ -39,7 +39,7 @@ class AuthStateNofitifer extends StateNotifier<AuthState> {
 
   Future<void> saveUserInfo({required UserId userId}) =>
       _userInfoStorage.saveUserInfo(
-        userId: userId, 
+        userId: userId,
         displayName: _authenticator.displayName,
         email: _authenticator.email,
       );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone/states/auth/provider/auth_state_provider.dart';
+import 'package:instagram_clone/views/component/loading/loading_screen.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
@@ -13,10 +13,12 @@ class MainView extends StatelessWidget {
         title: const Text("Main View"),
         actions: [
           Consumer(
-            builder: (context, ref, child) {
+            builder: (_, ref, child) {
               return IconButton(
-                onPressed: () async{
-                  ref.read(authStateProvider.notifier).logOUt();
+                onPressed: () async {
+                  LoadingScreen.instance()
+                      .show(context: context, text: 'Hello World');
+                  // ref.read(authStateProvider.notifier).logOUt();
                 },
                 icon: const Icon(Icons.logout_outlined),
               );
