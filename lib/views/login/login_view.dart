@@ -30,7 +30,7 @@ class LoginView extends ConsumerWidget {
                 Strings.welcomeToAppName,
                 style: Theme.of(context).textTheme.displaySmall,
               ),
-              const Divider(),
+              const Divider(), 
               Text(
                 Strings.logIntoYourAccount,
                 style: Theme.of(context)
@@ -44,7 +44,7 @@ class LoginView extends ConsumerWidget {
               TextButton(
                 style: TextButton.styleFrom(
                   backgroundColor: AppColor.loginButtonColor,
-                  foregroundColor: AppColor.loginButtonTextColor,
+                  foregroundColor: AppColor.loginButtonTextColor, 
                 ),
                 onPressed:
                     ref.watch(authStateProvider.notifier).loginWithGoogle,
